@@ -12,21 +12,34 @@ public class User
 {
 	 private static final long serialVersionUID = 1L;
 
+	//@Id
+    //@Constraints.Required
+    //@Formats.NonEmpty
+    //public String email;
+	
 	@Id
-    @Constraints.Required
-    @Formats.NonEmpty
-    public String email;
+	public Long id;
     
     @Constraints.Required
     public String name;
     
-    @Constraints.Required
-    public String password;
+   // @Constraints.Required
+   // public String password;
+   
+   @Constraints.Required
+   public String school;
     
     // -- Queries
     
     public static Model.Finder<String,User> find = new Model.Finder<String,User>(String.class, User.class);
     
+	public static void create(String name, String school)
+	{
+		User user = new User();
+		user.name = name;
+		user.school = school;
+		user.save();
+	}
     /**
      * Retrieve all users.
      */

@@ -1,7 +1,22 @@
-@(message: String)
+@(swimmerForm: Form[User])
+
+@import helper._
 
 @main("Welcome to Play") {
 
-    @play20.welcome(message, style = "Java")
+	<h1> Add a swimmer</h1>
+	@form(routes.Application.save()){
+		<fieldset>
+			@inputText(swimmerForm("name"), '_label -> "Swimmer name")
+			@inputText(swimmerForm("school"), '_label -> "school")
+		</fieldset>
+		
+		<div class="action">
+			<input type="submit" value="Create swimmer">
+		</div>
+	
+	}
+	
+	
 
 }

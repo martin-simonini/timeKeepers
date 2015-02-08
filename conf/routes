@@ -3,7 +3,17 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
+GET     /							    controllers.Application.index()
+GET		/swimmer						controllers.Application.save()
+POST	/save							controllers.Application.postSwimmer()
+GET     /login							controllers.Application.login()
+GET		/signup							controllers.Application.signup()
+
+#NavBar
+GET		/viewSwimmers					controllers.Application.viewSwimmers()
+GET		/addEvents						controllers.Application.addEvents()
+GET		/viewEvent						controllers.Application.viewEvent()
+GET		/addTime						controllers.Application.addTime()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
