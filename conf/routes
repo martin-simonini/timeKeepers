@@ -6,14 +6,17 @@
 GET     /							    controllers.Application.index()
 GET		/swimmer						controllers.Application.save()
 POST	/save							controllers.Application.postSwimmer()
-GET     /login							controllers.Application.login()
-GET		/signup							controllers.Application.signup()
+#GET     /login							controllers.Application.login()
+#GET		/signup						controllers.Application.signup()
+POST	/eventSave						controllers.Application.eventSave()
 
 #NavBar
-GET		/viewSwimmers					controllers.Application.viewSwimmers()
-GET		/addEvents						controllers.Application.addEvents()
+GET		/viewswimmers					controllers.Application.viewSwimmers()
+GET		/addevents						controllers.Application.addEvent()
 GET		/viewEvent						controllers.Application.viewEvent()
-GET		/addTime						controllers.Application.addTime()
+#GET		/addTime					controllers.Application.addTime()
+GET		/edituser/:id					controllers.Application.editUser(id: Long)
+POST	/updateUser/:id						controllers.Application.updateUser(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -1,0 +1,21 @@
+@(id: Long, editForm: Form[User])
+
+@import helper._
+
+@main("Edit User"){
+	<h1>Edit Users</h1>
+	
+	@form(routes.Application.updateUser(id)){
+		<fieldset>
+			@inputText(editForm("name"), '_label -> "@user.name")
+			@inputText(editForm("school"), '_label -> "@user.school")
+		</fieldset>
+		
+		<div class="action">
+			<input type="submit" value="Update swimmer">
+		</div>
+		<p>or <a href="@routes.Application.viewSwimmers()">Cancle</p>
+	
+}
+}
+	

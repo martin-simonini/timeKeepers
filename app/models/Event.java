@@ -16,25 +16,25 @@ public class Event extends Model
 	private static final long serialVersionUID = 1l;
 	
 	@Id
-    @Constraints.Required
-    @Formats.NonEmpty
-	Long id;
+	public Long id;
 	
 	@Constraints.Required
 	public String name;
 	
 	public String stroke;
-	public int distance; //in yards
+	@Constraints.Required(message = "Please enter a distance")
+	public int distance; 
+	public String units; //for the distance
 	
 	@ManyToMany
 	public List<User> swimmers = new ArrayList<User>();
 	
 	
-	public Event(String name, int distance, User swimmer)
+	public Event(String name, int distance, String units)
 	{
 		this.name = name;
 		this.distance = distance;
-		this.swimmers.add(swimmer);
+		this.units = units;
 	}
 	  public static Model.Finder<Long,Event> find = new Model.Finder<Long,Event>(Long.class, Event.class);
 	
@@ -47,11 +47,12 @@ public class Event extends Model
             .findList();
     }
 	
+	
+	
 	//create event
-    public static Event create(String name, int distance, String swimmers) {
-        Event event = new Event(name, distance, User.find.ref(swimmers));
+    public static Event create(String name, int distance, String units) {
+        Event event = new Event(name, distance, units);
         event.save();
-        event.saveManyToManyAssociations("members");
         return event;
     }
 	
@@ -87,6 +88,11 @@ public class Event extends Model
 			.eq("swimmer.email", user)
 			.eq("id", event)
 			.findRowCount() > 0;
+	}
+	
+	public static List<Event> findAll()
+	{
+		return find.all();
 	}
 	
 	public String toString()

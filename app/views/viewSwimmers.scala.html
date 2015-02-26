@@ -1,0 +1,22 @@
+
+@(Users: List[User])
+
+@main("View Swimmers"){
+	<h1>View all swimmers</h1>
+	<table>
+		<thead>
+			<tr>
+				<td>Swimmer Name</td>
+				<td>Swimmer school</td>
+			</tr>
+		</thead>
+		<tbody>
+			@for(user <- User.findAll()){
+				<tr>
+					<td><a href="@routes.Application.editUser(user.id)">@user.name</a></td>
+					<td>@user.school</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}

@@ -1,0 +1,19 @@
+@(eventForm: Form[Event])
+
+@import helper._
+
+@main("Event stuff"){
+	<h1>Add a event</h1>
+	@form(routes.Application.eventSave()){
+		<fieldset>
+			@inputText(eventForm("name"), '_label -> "Event name")
+			@inputText(eventForm("distance"), '_label -> "Event Distance")
+			@inputText(eventForm("units"), '_label -> "Units (for the distance)")
+		</fieldset>
+		
+		<div class="action">
+			<input type="submit" value="Create a new Event">
+		</div>
+
+	}
+}

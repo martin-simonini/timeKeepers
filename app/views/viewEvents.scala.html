@@ -1,0 +1,24 @@
+
+@(Event: List[Event])
+
+@main("View Event"){
+	<h1>View all Events</h1>
+	<table>
+		<thead>
+			<tr>
+				<td>Event name</td>
+				<td>Event Distance</td>
+				<td>Event swimmer(s)</td>
+			</tr>
+		</thead>
+		<tbody>
+			@for(event <- Event){
+				<tr>
+					<td>@event.name</td>
+					<td>@event.distance @event.units</td>
+					<!--Swimmers should go here-->
+				</tr>
+			}
+		</tbody>
+	</table>
+}
