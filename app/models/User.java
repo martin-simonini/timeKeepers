@@ -15,7 +15,7 @@ public class User extends Model
 	//@Id
     //@Constraints.Required
     //@Formats.NonEmpty
-    //public String email;
+    //p  ublic String email;
 	
 	@Id
 	public Long id;

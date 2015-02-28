@@ -1,0 +1,26 @@
+@(id: Long, editForm: Form[Event])
+
+@import helper._
+
+@main("Edit Event"){
+	<h1>Edit Event</h1>
+	
+	@form(routes.Application.updateEvent(id)){
+		<fieldset>
+			@inputText(editForm("name"), '_label -> "@event.name")
+			@inputText(editForm("distance"), '_label -> "@event.distance")
+			@inputText(editForm("units"), '_label -> "@event.units")
+		</fieldset>
+		
+		<div class="action">
+			<input type="submit" value="Update event">
+		</div>
+		<p>or <a href="@routes.Application.viewEvent()">Cancle</p>
+	
+    }
+	
+	@form(routes.Application.deleteEvent(id), 'class -> "topRight"){
+		<input type="submit" value="Delete this event">
+	}
+	
+	}

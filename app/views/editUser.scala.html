@@ -16,6 +16,12 @@
 		</div>
 		<p>or <a href="@routes.Application.viewSwimmers()">Cancle</p>
 	
-}
-}
+    }
+	
+	@form(routes.Application.deleteUser(id), 'class -> "topRight"){
+		<input type="submit" value="Delete this swimmer">
+	}
+	
+	}
+
 	

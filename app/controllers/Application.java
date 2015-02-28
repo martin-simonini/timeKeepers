@@ -2,23 +2,24 @@ package controllers;
 
 
 import play.*;
-import play.data.Form.*;
-import play.api.data.*;
-import play.api.data.Forms.*;
+import play.data.*;
+//import play.data.Form.*;
+//import play.api.data.*;
+//import play.api.data.Forms.*;
 import play.mvc.*;
 import views.html.*;
 import models.*;
-import static play.data.Form.form;
-import models.*;
+
+
 
 
 
 public class Application extends Controller 
 {
 
-    public static Result index() 
+    public static Result index()  
 	{
-		Form<User> swimmerForm = form(User.class);
+		Form<User> swimmerForm = Form.form(User.class);
         return ok(index.render(swimmerForm));
     }
 	
@@ -31,7 +32,7 @@ public class Application extends Controller
 	public static Result save()
 	{
 	
-		Form<User> swimmerForm = form(User.class).bindFromRequest();
+		Form<User> swimmerForm = Form.form(User.class).bindFromRequest();
 		if(swimmerForm.hasErrors())
 		{
 			return badRequest(index.render(swimmerForm));
@@ -55,13 +56,13 @@ public class Application extends Controller
 	
 	public static Result addEvent()
 	{
-		Form<Event> eventForm = form(Event.class);
+		Form<Event> eventForm = Form.form(Event.class);
         return ok(addEvent.render(eventForm));
 	}
 	
 	public static Result eventSave()
 	{
-		Form<Event> eventForm = form(Event.class).bindFromRequest();
+		Form<Event> eventForm = Form.form(Event.class).bindFromRequest();
 		if(eventForm.hasErrors())
 		{
 			return badRequest(addEvent.render(eventForm));
@@ -73,23 +74,54 @@ public class Application extends Controller
 	
 	public static Result editUser(Long id)
 	{
-		Form<User> editForm = form(User.class).fill(User.findById(id));
+		Form<User> editForm = Form.form(User.class).fill(User.findById(id));
 		return ok(editUser.render(id, editForm));
 		
 	}
 	
 	public static Result updateUser(Long id)
 	{
-		form<User> updateForm = form(User.class).bindFromRequest();
+		Form<User> updateForm = Form.form(User.class).bindFromRequest();
 		if(updateForm.hasErrors())
 		{
 			return badRequest(editUser.render(id, updateForm));
 		}
 		updateForm.get().update(id);
 		flash("Success", "User "+updateForm.get().name+" has been updated");
-		return ok(viewSwimmers.render());
+		return ok(viewSwimmers.render(User.findAll()));
+	}
+	
+	public static Result deleteUser(Long id)
+	{
+		User.findById(id).delete();
+		flash("Success", "Swimmer has been deleted");
+		return ok(viewSwimmers.render(User.findAll())) ;
+	}
+	
+	public static Result editEvent(Long id)
+	{
+		Form<Event> editForm = Form.form(Event.class).fill(Event.findById(id));
+		return ok(editEvent.render(id,editForm));
+	}
+	
+	public static Result updateEvent(Long id)
+	{
+		Form<Event> updateForm = Form.form(Event.class).bindFromRequest();
+		if(updateForm.hasErrors())
+		{
+			return badRequest(editEvent.render(id, updateForm));
+		}
+		updateForm.get().update(id);
+		flash("Succcess", "Event "+updateForm.get().name+" has been updated");
+		return ok(viewEvents.render(Event.findAll()));
+	}
+	
+	public static Result deleteEvent(Long id)
+	{
+		Event.findById(id).delete();
+		flash("Success", "Event has been deleted");
+		return ok(viewEvents.render(Event.findAll()));
 	}
 
-	
 	
 }

@@ -90,6 +90,11 @@ public class Event extends Model
 			.findRowCount() > 0;
 	}
 	
+	public static Event findById(Long id)
+	{
+		return find.where().eq("id", id).findUnique();
+	}
+	
 	public static List<Event> findAll()
 	{
 		return find.all();
