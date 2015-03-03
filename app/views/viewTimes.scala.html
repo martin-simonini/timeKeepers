@@ -1,0 +1,40 @@
+@(Event: Event,Times: List[Times], timesForm: Form[Times])
+
+@import helper._
+
+@main("View Times"){
+	<h1>View Times for @Event.name</h1>
+	<table>
+		<thead>
+			<tr>
+				<td>date recorded</td>
+				<td>Time</td>
+				<td>Swimmer</td>
+			</tr>
+		</thead>
+		<tbody>
+			@for(times <- Times){
+				<tr>
+					<td>@times.date</td>
+					<td>@times.time</td>
+					<td>@times.swimmer<td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	
+	@form(routes.Application.addTime(Event.id)){
+		<fieldset>
+		@inputText(timesForm("name"), '_label -> "Swimmer's name")
+		@inputText(timesForm("time"), '_label -> "Swimmer's time")
+		@inputText(timesForm("date"), '_label -> "date of completion")
+		@select(
+			timesForm("User.id"),
+			options(User.findAllMap()),
+			'_label -> "Swimmers", '_default -> "--Choose a swimmer --")
+		</fieldset>
+		
+		<input type = "submit" value="Add a time" class="btn primary">
+	}
+	
+}

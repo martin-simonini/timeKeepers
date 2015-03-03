@@ -52,7 +52,16 @@ public class User extends Model
     public static List<User> findAll() {
         return find.all();
     }
-
+	
+	public static Map<String, String> findAllMap()
+	{
+	LinkedHashMap<String, String> users = new LinkedHashMap<String, String>();
+	for(User c: User.findAll())
+	{
+		users.put(c.name, c.idToString());
+	}
+	return users;
+	}
     /**
      * Retrieve a User from id.
      */
@@ -72,8 +81,13 @@ public class User extends Model
     */
     // --
     
-    public String toString() {
+    public String NametoString() {
         return "User(" + name + ")";
     }
+	
+	public String idToString()
+	{
+		return ""+id+"";
+	}
 
 }

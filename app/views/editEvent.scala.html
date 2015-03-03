@@ -7,9 +7,9 @@
 	
 	@form(routes.Application.updateEvent(id)){
 		<fieldset>
-			@inputText(editForm("name"), '_label -> "@event.name")
-			@inputText(editForm("distance"), '_label -> "@event.distance")
-			@inputText(editForm("units"), '_label -> "@event.units")
+			@inputText(editForm("name"), '_label -> "Name")
+			@inputText(editForm("distance"), '_label -> "distance")
+			@inputText(editForm("units"), '_label -> "units")
 		</fieldset>
 		
 		<div class="action">

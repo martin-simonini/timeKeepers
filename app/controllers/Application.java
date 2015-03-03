@@ -122,6 +122,25 @@ public class Application extends Controller
 		flash("Success", "Event has been deleted");
 		return ok(viewEvents.render(Event.findAll()));
 	}
+	//User: List[User],
+	public static Result viewTimes(Long id)
+	{
+		Form<Times> timesForm = Form.form(Times.class);
+		
+		return ok(viewTimes.render(Event.findById(id) ,Times.findByEvent(id), timesForm));
+	}
+	
+	public static Result addTime(Long id)
+	{
+		Form<Times> timesForm = Form.form(Times.class).bindFromRequest();
+		if(timesForm.hasErrors())
+		{
+			return badRequest(timesForm.render(id, timesForm));
+		}
+		timesForm.get().update(id);
+		flash("Succcess, your times have been added");
+		return ok(viewTimes.render(Event.findById(id) ,Times.findByEvent(id), timesForm));
+	}
 
 	
 }

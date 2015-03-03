@@ -13,7 +13,6 @@ POST	/eventSave						controllers.Application.eventSave()
 GET		/viewswimmers					controllers.Application.viewSwimmers()
 GET		/addevents						controllers.Application.addEvent()
 GET		/viewEvent						controllers.Application.viewEvent()
-#GET	/addTime						controllers.Application.addTime()
 
 #Edit and delete user
 GET		/edituser/:id					controllers.Application.editUser(id: Long)
@@ -24,6 +23,10 @@ GET		/deleteUser/:id					controllers.Application.deleteUser(id: Long)
 GET		/editEvent/:id					controllers.Application.editEvent(id: Long)
 POST	/updateEvent/:id				controllers.Application.updateEvent(id: Long)
 GET		/deleteEvent/:id				controllers.Application.deleteEvent(id: Long)
+
+#view times
+GET 	/viewTimes/:id					controllers.Application.viewTimes(id: Long)
+GET	/addTime/:id							controllers.Application.addTime(id: Long)
 
 
 # Map static resources from the /public folder to the /assets URL path

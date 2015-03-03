@@ -28,6 +28,7 @@ public class Event extends Model
 	
 	@ManyToMany
 	public List<User> swimmers = new ArrayList<User>();
+
 	
 	
 	public Event(String name, int distance, String units)

@@ -7,8 +7,8 @@
 	
 	@form(routes.Application.updateUser(id)){
 		<fieldset>
-			@inputText(editForm("name"), '_label -> "@user.name")
-			@inputText(editForm("school"), '_label -> "@user.school")
+			@inputText(editForm("name"), '_label -> "name")
+			@inputText(editForm("school"), '_label -> "school")
 		</fieldset>
 		
 		<div class="action">

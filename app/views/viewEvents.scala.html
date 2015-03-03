@@ -8,15 +8,15 @@
 			<tr>
 				<td>Event name</td>
 				<td>Event Distance</td>
-				<td>Event swimmer(s)</td>
+				<td>view times</td>
 			</tr>
 		</thead>
 		<tbody>
 			@for(event <- Event){
 				<tr>
-					<td>@event.name</td>
+					<td><a href="@routes.Application.editEvent(event.id)">@event.name</td>
 					<td>@event.distance @event.units</td>
-					<!--Swimmers should go here-->
+					<td><a href="@routes.Application.viewTimes(event.id)">View times</a></td>
 				</tr>
 			}
 		</tbody>

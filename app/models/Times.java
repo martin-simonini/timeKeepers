@@ -11,8 +11,6 @@ import play.data.validation.*;
 public class Times 
 {
 	@Id
-    @Constraints.Required
-    @Formats.NonEmpty
 	Long id;
 	
 	@ManyToOne
@@ -28,23 +26,32 @@ public class Times
 	@ManyToOne
 	public User swimmer;
 	
+
+	
      public static Model.Finder<String,Times> find = new Model.Finder<String,Times>(String.class, Times.class);
 	 
 	
 	//find all times for an event
-    public static List<Event> findByEvent(Long event) {
-        return Event.find.where()
-            .eq("event.id", event)
+    public static List<Times> findByEvent(Long id) {
+        return Times.find.where()
+            .eq("event.id", id)
             .findList();
     }
+	
+
 	
 	
     public static boolean isOwner(Long time, String user) {
         return find.where()
-            .eq("event.swimmers.email", user)
+            .eq("event.swimmers.id", user)
             .eq("id", time)
             .findRowCount() > 0;
     }
+	
+	public static List<Times> findAll()
+	{
+		return find.all();                  
+	}
 	
 	public String toString()
 	{
