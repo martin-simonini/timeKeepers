@@ -1,3 +1,5 @@
+@***
+
 @(Event: Event,Times: List[Times], timesForm: Form[Times])
 
 @import helper._
@@ -25,16 +27,17 @@
 	
 	@form(routes.Application.addTime(Event.id)){
 		<fieldset>
-		@inputText(timesForm("name"), '_label -> "Swimmer's name")
-		@inputText(timesForm("time"), '_label -> "Swimmer's time")
-		@inputText(timesForm("date"), '_label -> "date of completion")
 		@select(
 			timesForm("User.id"),
 			options(User.findAllMap()),
 			'_label -> "Swimmers", '_default -> "--Choose a swimmer --")
+		@inputText(timesForm("time"), '_label -> "Swimmer's time")
+		@inputText(timesForm("date"), '_label -> "date of completion")
+
 		</fieldset>
 		
 		<input type = "submit" value="Add a time" class="btn primary">
 	}
 	
 }
+**@
