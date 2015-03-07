@@ -15,9 +15,9 @@ insert into event (id,name,stroke,distance,units) values(30,'Fly Workout','Butte
 insert into event (id,name,stroke,distance,units) values(40,'Metro prep','IM','200','Lightyears');
 insert into event (id,name,stroke,distance,units) values(50,'Distance work','Backstroke','5000','Smiles');
 
-insert into times(id,event_id,time,date, swimmer_id) values (10,1,'1:1:02','12/21/12',1);
-insert into times(id,event_id,time,date,swimmer_id) values (10,1,'10:10:020','03/07/2015',2);
-insert into times(id,event_id,time,date,swimmer_id) values (11,1,'998:1:02','04/30/98',3);
-insert into times(id,event_id,time,date,swimmer_id) values (12,1,'4478:10:02','09/09/09',4);
-insert into times(id,event_id,time,date,swimmer_id) values (13,1,'198:12231:02','10/10/3030',5);
+insert into times(id,event_id,time,date, swimmer_id) values (10,10,'1:1:02','12/21/12',10);
+insert into times(id,event_id,time,date,swimmer_id) values (14,10,'10:10:020','03/07/2015',20);
+insert into times(id,event_id,time,date,swimmer_id) values (11,10,'998:1:02','04/30/98',30);
+insert into times(id,event_id,time,date,swimmer_id) values (12,10,'4478:10:02','09/09/09',40);
+insert into times(id,event_id,time,date,swimmer_id) values (13,10,'198:12231:02','10/10/3030',50);
 
