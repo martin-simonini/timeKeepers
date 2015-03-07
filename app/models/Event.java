@@ -96,6 +96,11 @@ public class Event extends Model
 		return find.where().eq("id", id).findUnique();
 	}
 	
+	public static Event findByName(String name)
+	{
+		return find.where().eq("name", name).findUnique();
+	}
+	
 	public static List<Event> findAll()
 	{
 		return find.all();

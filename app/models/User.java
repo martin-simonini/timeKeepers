@@ -68,6 +68,11 @@ public class User extends Model
     public static User findById(Long id) {
         return find.where().eq("id", id).findUnique();
     }
+	
+	public static User findByName(String name)
+	{
+		return find.where().eq("name", name).findUnique();
+	}
     
     /**
      * Authenticate a User.

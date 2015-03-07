@@ -26,10 +26,27 @@ public class Times
 	@ManyToOne
 	public User swimmer;
 	
-
-	
+	public Times(Event event, String time, String date, User user)
+	{
+		this.event = event;
+		this.time = time;
+		this.date = date;
+		this.swimmer = user;
+	}
+		
      public static Model.Finder<String,Times> find = new Model.Finder<String,Times>(String.class, Times.class);
 	 
+	 public static Times create(Event event, String time, String date, User user)
+	 {
+		 
+		 Times times = new Times(event,time,date,user);
+		 times.event = event;
+		 times.time = time;
+		 times.date = date;
+		 times.swimmer = user;
+		 
+		 return times;
+	 }
 	
 	//find all times for an event
     public static List<Times> findByEvent(Long id) {

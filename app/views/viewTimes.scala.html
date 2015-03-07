@@ -1,4 +1,4 @@
-@***
+
 
 @(Event: Event,Times: List[Times], timesForm: Form[Times])
 
@@ -6,12 +6,12 @@
 
 @main("View Times"){
 	<h1>View Times for @Event.name</h1>
-	<table>
+	<table class="table table-hover table-striped">
 		<thead>
 			<tr>
-				<td>date recorded</td>
-				<td>Time</td>
-				<td>Swimmer</td>
+				<td><b>date recorded</b></td>
+				<td><b>Time</b></td>
+				<td><b>Swimmer</b></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -19,7 +19,7 @@
 				<tr>
 					<td>@times.date</td>
 					<td>@times.time</td>
-					<td>@times.swimmer<td>
+					<td>@times.swimmer.name<td>
 				</tr>
 			}
 		</tbody>
@@ -28,7 +28,7 @@
 	@form(routes.Application.addTime(Event.id)){
 		<fieldset>
 		@select(
-			timesForm("User.id"),
+			timesForm("User.name"),
 			options(User.findAllMap()),
 			'_label -> "Swimmers", '_default -> "--Choose a swimmer --")
 		@inputText(timesForm("time"), '_label -> "Swimmer's time")
@@ -40,4 +40,4 @@
 	}
 	
 }
-**@
+

@@ -6,7 +6,7 @@
 
 	<h1> Add a swimmer</h1>
 	@form(routes.Application.save()){
-		<fieldset>
+		<fieldset class="form-horizontal">
 			@inputText(swimmerForm("name"), '_label -> "Swimmer name")
 			@inputText(swimmerForm("school"), '_label -> "school")
 		</fieldset>

@@ -122,7 +122,7 @@ public class Application extends Controller
 		flash("Success", "Event has been deleted");
 		return ok(viewEvents.render(Event.findAll()));
 	}
-	/*
+	
 	//User: List[User],
 	public static Result viewTimes(Long id)
 	{
@@ -138,10 +138,10 @@ public class Application extends Controller
 		{
 			return badRequest(viewTimes.render(Event.findById(id) ,Times.findByEvent(id), timesForm));
 		}
-		timesForm.update();
+		Times time = Times.create(timesForm.get().event, timesForm.get().time, timesForm.get().date, timesForm.get().swimmer);
 		flash("Succcess, your times have been added");
 		return ok(viewTimes.render(Event.findById(id) ,Times.findByEvent(id), timesForm));
 	}
-*/
+
 	
 }

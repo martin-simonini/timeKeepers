@@ -3,12 +3,12 @@
 
 @main("View Event"){
 	<h1>View all Events</h1>
-	<table>
+	<table class="table table-hover table-striped">
 		<thead>
 			<tr>
-				<td>Event name</td>
-				<td>Event Distance</td>
-				<td>view times</td>
+				<td><b>Event name</b></td>
+				<td><b>Event Distance</b></td>
+				<td><b>view times</b></td>
 			</tr>
 		</thead>
 		<tbody>
@@ -16,7 +16,7 @@
 				<tr>
 					<td><a href="@routes.Application.editEvent(event.id)">@event.name</td>
 					<td>@event.distance @event.units</td>
-					@**<td><a href="@routes.Application.viewTimes(event.id)">View times</a></td>**@
+					<td><a href="@routes.Application.viewTimes(event.id)">View times</a></td>
 				</tr>
 			}
 		</tbody>

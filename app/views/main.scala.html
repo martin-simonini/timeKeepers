@@ -9,16 +9,18 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
         <title>@title</title>
                <!-- Bootstrap CSS -->
-        <link rel="stylesheet" type="text/css" media="screen"
-			href = "@routes.Assets.at("stylesheets/bootstrap.min.css")">
-        <!-- jQuery JS -->
+        <link rel="stylesheet" type="text/css" media="screen" href = "@routes.Assets.at("stylesheets/bootstrap.min.css")">
+                <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/main.css")"> 
+		<!-- jQuery JS -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     </head>
     <body>
-	<div class="navBar">
-	<table>
+	<nav class="navbar navbar-inverse">
+	<div class="container">
+	
+	<table id="nav">
 		<tr>
-			<td>SwimLanes.com</td>
+			<td><a href="@routes.Application.viewSwimmers" class="navbar-brand" id="brand">SwimLanes.com</a></td>
 			<td><a href="@routes.Application.index">Add Swimmer</a></td>
 			<td><a href="@routes.Application.viewSwimmers">View all swimmers</a></td>
 			<td><a href="@routes.Application.addEvent">Add an event</a></td>
@@ -26,6 +28,8 @@
 		</tr>
 	</table>
 	</div>
+
+	</nav>
 	<div class="container">
         @content
 	</div>
